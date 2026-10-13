@@ -29,7 +29,16 @@ distributions {
     main {
         contents {
             from(rootProject.layout.projectDirectory) {
-                include("LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md")
+                include(
+                    "LICENSE", "NOTICE", "NOTICE.ko.md",
+                    "README.md", "README.ko.md",
+                    "CONTRIBUTING.md", "CONTRIBUTING.ko.md",
+                    "THIRD_PARTY_NOTICES.md", "THIRD_PARTY_NOTICES.ko.md",
+                )
+            }
+            from(rootProject.layout.projectDirectory.dir("licenses")) {
+                into("licenses")
+                include("gradle-LICENSE")
             }
         }
     }

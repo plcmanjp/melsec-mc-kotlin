@@ -1,9 +1,21 @@
-# 기여 안내
+# Contributing
 
-이슈에는 라이브러리 버전, JDK/OS, PLC 모델과 연결 모듈, 프레임/데이터 모드, 기대 동작과 재현 방법을 적어주세요. 실제 PLC 주소, 공장/고객 이름, 생산 데이터와 인증정보는 제거하세요.
+**English** | [한국어](CONTRIBUTING.ko.md) | [README](README.md)
 
-PR은 작은 범위로 작성하고 변경 이유와 자동 테스트를 포함하세요. 프로토콜 변경은 공식 매뉴얼 식별자와 절을 근거로 제시하세요. 매뉴얼 원본 파일을 업로드하지 마세요. 본인이 기여할 권한을 가진 코드만 제출하세요. 기여는 별도 합의가 없으면 이 저장소의 Apache-2.0 조건으로 제공합니다.
+## Report an issue
 
-한 연결에서는 요청부터 응답 디코딩까지 순차로 처리합니다. 실제 PLC에 접속하는 테스트를 기본 테스트나 CI에 추가하지 마세요. 원격 쓰기와 통신 수명주기를 바꾸는 PR은 실패/취소/중복 요청의 회귀 근거를 포함하세요.
+Include the library version, JDK/OS, PLC model and connection module, frame/data mode, expected behavior, and reproduction steps. Remove real PLC addresses, factory/customer names, production data, and credentials.
 
-저장소 루트에서 `./gradlew build test :melsec-cli:installDist`를 실행합니다. Windows에서는 `gradlew.bat`를 사용합니다.
+## Submit a change
+
+Keep pull requests focused. Explain the reason for the change and include relevant automated tests. For protocol changes, cite the official manual identifier and section. Do not upload the manual itself. Submit only code you have the right to contribute. Unless separately agreed, contributions are provided under this repository's [Apache-2.0 license](LICENSE).
+
+Process requests sequentially on each connection, from encoding through response decoding. Do not add tests that connect to a physical PLC to the default suite or CI. Changes to remote writes or communication lifecycles need regression evidence for failures, cancellation, and duplicate requests.
+
+## Documentation
+
+English is the default language for reader-facing documentation. Keep the matching Korean guides aligned when changing usage, supported features, or limitations. Maintain the language switch links, use repository-relative links, and avoid local absolute paths. Preserve the original license texts.
+
+## Verify
+
+From the repository root, run `./gradlew build test :melsec-cli:installDist`. On Windows, use `gradlew.bat`.
