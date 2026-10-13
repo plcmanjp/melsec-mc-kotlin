@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.frame
+package melsecmckotlin.frame
 
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.McProtocolException
-import com.plciocheck.melsecmc.device.ModuleBufferAddress
+import melsecmckotlin.FrameException
+import melsecmckotlin.McProtocolException
+import melsecmckotlin.device.ModuleBufferAddress
 import java.io.ByteArrayOutputStream
 import java.util.Locale
 import java.util.concurrent.atomic.AtomicInteger

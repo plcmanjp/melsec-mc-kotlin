@@ -1,10 +1,10 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.ConnectionException
-import com.plciocheck.melsecmc.ResponseTimeoutException
+import melsecmckotlin.ConnectionException
+import melsecmckotlin.ResponseTimeoutException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.SocketAddress

@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.cli
+package melsecmckotlin.cli
 
-import com.plciocheck.melsecmc.McProtocolException
-import com.plciocheck.melsecmc.ResponseTimeoutException
-import com.plciocheck.melsecmc.device.DeviceParser
+import melsecmckotlin.McProtocolException
+import melsecmckotlin.ResponseTimeoutException
+import melsecmckotlin.device.DeviceParser
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
@@ -296,7 +296,7 @@ class MainTest {
         val args = parseArgs(arrayOf("--ip", "192.0.2.10", "read", "--device", "M0", "--bit", "--count", "3"))
         assertEquals("[BIT] M0=1 M1=0 M2=1", formatResponse(args, response(0x10, 0x1F)).last())
         assertEquals("[BIT] M0=1", formatResponse(args.copy(count = 1), response(0x12)).last())
-        assertFailsWith<com.plciocheck.melsecmc.FrameException> {
+        assertFailsWith<melsecmckotlin.FrameException> {
             formatResponse(args, response(0x10, 0x2F))
         }
     }

@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.ConnectionException
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.ResponseTimeoutException
+import melsecmckotlin.ConnectionException
+import melsecmckotlin.FrameException
+import melsecmckotlin.ResponseTimeoutException
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

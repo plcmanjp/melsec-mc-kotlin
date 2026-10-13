@@ -6,7 +6,7 @@ Mitsubishi MELSEC PLC의 MC Protocol 3E/4E 프레임을 다루는 Kotlin/JVM 라
 
 [![CI](https://github.com/plcmanjp/melsec-mc-kotlin/actions/workflows/ci.yml/badge.svg)](https://github.com/plcmanjp/melsec-mc-kotlin/actions/workflows/ci.yml)
 
-이 프로젝트는 Mitsubishi Electric의 공식 제품이나 인증 라이브러리가 아닌 독립 구현입니다. 현재 버전은 `0.1.0`이며 0.x 버전에서 API가 변경될 수 있습니다.
+이 프로젝트는 Mitsubishi Electric의 공식 제품이나 인증 라이브러리가 아닌 독립 구현입니다. 현재 버전은 `0.2.0`이며 0.x 버전에서 API가 변경될 수 있습니다.
 
 ## 구성과 지원 범위
 
@@ -15,7 +15,7 @@ Mitsubishi MELSEC PLC의 MC Protocol 3E/4E 프레임을 다루는 Kotlin/JVM 라
 | `melsec-mc` | 디바이스 주소 파싱, 프레임 인코더/디코더, TCP/UDP 클라이언트 |
 | `melsec-cli` | 3E Binary TCP/UDP 읽기와 명시적으로 허용한 쓰기 예제 |
 
-각 모듈의 소스는 `src/`, 테스트는 `test/`에 있습니다. 코어는 `device/`, `frame/`, `transport/` 기능 폴더만 유지합니다. Kotlin 패키지명은 `com.plciocheck.melsecmc...`로 유지하며 폴더 깊이와는 별개입니다.
+각 모듈의 소스는 `src/`, 테스트는 `test/`에 있습니다. 코어는 `device/`, `frame/`, `transport/` 기능 폴더만 유지합니다. Kotlin 패키지명은 `melsecmckotlin...`로 유지하며 폴더 깊이와는 별개입니다.
 
 코어는 다음 기능을 구현합니다.
 
@@ -61,22 +61,28 @@ includeBuild("../melsec-mc-kotlin")
 
 ```kotlin
 dependencies {
-    implementation("com.plciocheck:melsec-mc:0.1.0")
+    implementation("com.plciocheck:melsec-mc:0.2.0")
 }
 ```
 
 이 좌표는 composite build가 로컬 프로젝트로 대체합니다. `includeBuild` 없이 Maven Central에서 받을 수 있는 좌표가 아닙니다.
+
+## 0.1.0에서 전환
+
+`0.2.0`은 Kotlin/JVM 기본 패키지를 `com.plciocheck.melsecmc`에서 `melsecmckotlin`으로 변경합니다. import와 직접 지정한 정규 클래스명을 수정하고 소비 코드를 다시 컴파일하세요. 이전에 컴파일된 소비 코드는 새 패키지와 바이너리 호환되지 않습니다.
+
+위 composite build에서는 의존성을 `com.plciocheck:melsec-mc:0.2.0`으로 변경하세요. Gradle group은 `com.plciocheck`로 유지하며 저장소명, 모듈명과 MC 통신 동작은 같습니다. `v0.1.0` 태그는 이전 패키지와 버전을 보존합니다.
 
 ## Kotlin 읽기 예제
 
 다음 함수는 TCP 3E Binary로 D100부터 5워드를 읽습니다. 호출자가 실제 PLC 주소와 설정된 MC 포트를 전달합니다.
 
 ```kotlin
-import com.plciocheck.melsecmc.device.DeviceParser
-import com.plciocheck.melsecmc.frame.McFrameDecoder
-import com.plciocheck.melsecmc.frame.McFrameEncoder
-import com.plciocheck.melsecmc.transport.ConnectionConfig
-import com.plciocheck.melsecmc.transport.McSocketClient
+import melsecmckotlin.device.DeviceParser
+import melsecmckotlin.frame.McFrameDecoder
+import melsecmckotlin.frame.McFrameEncoder
+import melsecmckotlin.transport.ConnectionConfig
+import melsecmckotlin.transport.McSocketClient
 
 suspend fun readD100(ip: String, port: Int): IntArray {
     val encoder = McFrameEncoder()

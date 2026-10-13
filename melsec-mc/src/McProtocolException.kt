@@ -1,9 +1,9 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc
+package melsecmckotlin
 
-import com.plciocheck.melsecmc.frame.EndCode
+import melsecmckotlin.frame.EndCode
 
 /**
  * MC Protocol 통신/파싱 예외 — 기반 클래스

@@ -1,7 +1,7 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
 /**
  * 순수 모듈용 진단 sink.

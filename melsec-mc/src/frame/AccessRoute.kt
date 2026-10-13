@@ -1,7 +1,7 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.frame
+package melsecmckotlin.frame
 
 /**
  * 3E Frame Access Route 5 byte 파라미터

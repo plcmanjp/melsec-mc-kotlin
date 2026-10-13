@@ -1,12 +1,12 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.ResponseTimeoutException
-import com.plciocheck.melsecmc.frame.DataMode
-import com.plciocheck.melsecmc.frame.FrameType
+import melsecmckotlin.FrameException
+import melsecmckotlin.ResponseTimeoutException
+import melsecmckotlin.frame.DataMode
+import melsecmckotlin.frame.FrameType
 import kotlinx.coroutines.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -405,7 +405,7 @@ class McDatagramClientTest {
             connect.await()
         }
 
-        assertTrue(result.exceptionOrNull() is com.plciocheck.melsecmc.ConnectionException)
+        assertTrue(result.exceptionOrNull() is melsecmckotlin.ConnectionException)
         assertEquals(0, pendingPublished.get(), "terminal close 뒤 pending/connect admission 금지")
     }
 
@@ -437,7 +437,7 @@ class McDatagramClientTest {
             connect.await()
         }
 
-        assertTrue(result.exceptionOrNull() is com.plciocheck.melsecmc.ConnectionException)
+        assertTrue(result.exceptionOrNull() is melsecmckotlin.ConnectionException)
         assertEquals(0, connectSucceeded.get(), "close된 pending DatagramSocket connect 성공 금지")
     }
 
@@ -467,9 +467,9 @@ class McDatagramClientTest {
             connect.await()
         }
 
-        assertTrue(result.exceptionOrNull() is com.plciocheck.melsecmc.ConnectionException)
+        assertTrue(result.exceptionOrNull() is melsecmckotlin.ConnectionException)
         val sendFailure = runBlocking { runCatching { client.sendAndReceive(goldenRequest) } }
-        assertTrue(sendFailure.exceptionOrNull() is com.plciocheck.melsecmc.ConnectionException)
+        assertTrue(sendFailure.exceptionOrNull() is melsecmckotlin.ConnectionException)
     }
 
     @Test
@@ -489,7 +489,7 @@ class McDatagramClientTest {
         client.close()
         val result = runBlocking { runCatching { client.sendAndReceive(goldenRequest) } }
 
-        assertTrue(result.exceptionOrNull() is com.plciocheck.melsecmc.ConnectionException)
+        assertTrue(result.exceptionOrNull() is melsecmckotlin.ConnectionException)
         assertEquals(0, socketCreates.get(), "terminal close 뒤 UDP auto-connect는 0건이어야 한다")
     }
 

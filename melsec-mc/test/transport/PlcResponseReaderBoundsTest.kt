@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.frame.DataMode
-import com.plciocheck.melsecmc.frame.FrameType
+import melsecmckotlin.FrameException
+import melsecmckotlin.frame.DataMode
+import melsecmckotlin.frame.FrameType
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import java.io.ByteArrayInputStream

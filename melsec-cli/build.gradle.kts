@@ -13,7 +13,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("com.plciocheck.melsecmc.cli.MainKt")
+    mainClass.set("melsecmckotlin.cli.MainKt")
 }
 
 dependencies {

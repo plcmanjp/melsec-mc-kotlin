@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.frame
+package melsecmckotlin.frame
 
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.device.DeviceParser
-import com.plciocheck.melsecmc.device.ModuleBufferAddress
+import melsecmckotlin.FrameException
+import melsecmckotlin.device.DeviceParser
+import melsecmckotlin.device.ModuleBufferAddress
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals

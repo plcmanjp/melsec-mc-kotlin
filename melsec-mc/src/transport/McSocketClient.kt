@@ -1,11 +1,11 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.ConnectionException
-import com.plciocheck.melsecmc.McProtocolException
-import com.plciocheck.melsecmc.ResponseTimeoutException
+import melsecmckotlin.ConnectionException
+import melsecmckotlin.McProtocolException
+import melsecmckotlin.ResponseTimeoutException
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers

@@ -1,21 +1,21 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.cli
+package melsecmckotlin.cli
 
-import com.plciocheck.melsecmc.ConnectionException
-import com.plciocheck.melsecmc.FrameException
-import com.plciocheck.melsecmc.McProtocolException
-import com.plciocheck.melsecmc.ResponseTimeoutException
-import com.plciocheck.melsecmc.device.DeviceCode
-import com.plciocheck.melsecmc.device.DeviceParser
-import com.plciocheck.melsecmc.device.DeviceRef
-import com.plciocheck.melsecmc.frame.EndCode
-import com.plciocheck.melsecmc.frame.McFrameDecoder
-import com.plciocheck.melsecmc.frame.McFrameEncoder
-import com.plciocheck.melsecmc.transport.ConnectionConfig
-import com.plciocheck.melsecmc.transport.McDatagramClient
-import com.plciocheck.melsecmc.transport.McSocketClient
+import melsecmckotlin.ConnectionException
+import melsecmckotlin.FrameException
+import melsecmckotlin.McProtocolException
+import melsecmckotlin.ResponseTimeoutException
+import melsecmckotlin.device.DeviceCode
+import melsecmckotlin.device.DeviceParser
+import melsecmckotlin.device.DeviceRef
+import melsecmckotlin.frame.EndCode
+import melsecmckotlin.frame.McFrameDecoder
+import melsecmckotlin.frame.McFrameEncoder
+import melsecmckotlin.transport.ConnectionConfig
+import melsecmckotlin.transport.McDatagramClient
+import melsecmckotlin.transport.McSocketClient
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.runBlocking
 import java.net.InetAddress

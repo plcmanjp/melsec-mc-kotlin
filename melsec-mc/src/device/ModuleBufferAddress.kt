@@ -1,7 +1,7 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.device
+package melsecmckotlin.device
 
 import java.util.Locale
 

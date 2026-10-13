@@ -6,7 +6,7 @@ A Kotlin/JVM library for MC Protocol 3E/4E communication with Mitsubishi MELSEC 
 
 [![CI](https://github.com/plcmanjp/melsec-mc-kotlin/actions/workflows/ci.yml/badge.svg)](https://github.com/plcmanjp/melsec-mc-kotlin/actions/workflows/ci.yml)
 
-This is an independent implementation, not an official or certified Mitsubishi Electric product. The current version is `0.1.0`. APIs may change during the 0.x series.
+This is an independent implementation, not an official or certified Mitsubishi Electric product. The current version is `0.2.0`. APIs may change during the 0.x series.
 
 ## Modules and supported features
 
@@ -15,7 +15,7 @@ This is an independent implementation, not an official or certified Mitsubishi E
 | `melsec-mc` | Device address parsing, frame encoding/decoding, TCP/UDP clients |
 | `melsec-cli` | 3E Binary TCP/UDP examples for reads and explicitly enabled writes |
 
-Sources are in each module's `src/` directory and tests are in `test/`. The core keeps only the `device/`, `frame/`, and `transport/` groups. Kotlin package names remain `com.plciocheck.melsecmc...`; directory depth is independent of those names.
+Sources are in each module's `src/` directory and tests are in `test/`. The core keeps only the `device/`, `frame/`, and `transport/` groups. Kotlin package names remain `melsecmckotlin...`; directory depth is independent of those names.
 
 The core implements:
 
@@ -61,22 +61,28 @@ Configure Kotlin/JVM and Maven Central in the consuming project, then add this d
 
 ```kotlin
 dependencies {
-    implementation("com.plciocheck:melsec-mc:0.1.0")
+    implementation("com.plciocheck:melsec-mc:0.2.0")
 }
 ```
 
 The composite build substitutes this coordinate with the local project. It is not a coordinate you can download from Maven Central without `includeBuild`.
+
+## Migrating from 0.1.0
+
+Version `0.2.0` changes the Kotlin/JVM package root from `com.plciocheck.melsecmc` to `melsecmckotlin`. Update imports and any fully qualified class names, then recompile consuming code. Previously compiled consumers are not binary compatible with the new package names.
+
+With the composite build above, update the dependency to `com.plciocheck:melsec-mc:0.2.0`. The Gradle group remains `com.plciocheck`; the repository, module names, and MC communication behavior are unchanged. The `v0.1.0` tag retains the previous packages and version.
 
 ## Kotlin read example
 
 This function reads five words starting at D100 over TCP 3E Binary. Supply the actual PLC address and its configured MC port.
 
 ```kotlin
-import com.plciocheck.melsecmc.device.DeviceParser
-import com.plciocheck.melsecmc.frame.McFrameDecoder
-import com.plciocheck.melsecmc.frame.McFrameEncoder
-import com.plciocheck.melsecmc.transport.ConnectionConfig
-import com.plciocheck.melsecmc.transport.McSocketClient
+import melsecmckotlin.device.DeviceParser
+import melsecmckotlin.frame.McFrameDecoder
+import melsecmckotlin.frame.McFrameEncoder
+import melsecmckotlin.transport.ConnectionConfig
+import melsecmckotlin.transport.McSocketClient
 
 suspend fun readD100(ip: String, port: Int): IntArray {
     val encoder = McFrameEncoder()

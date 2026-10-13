@@ -1,10 +1,10 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.transport
+package melsecmckotlin.transport
 
-import com.plciocheck.melsecmc.frame.DataMode
-import com.plciocheck.melsecmc.frame.FrameType
+import melsecmckotlin.frame.DataMode
+import melsecmckotlin.frame.FrameType
 
 /**
  * PLC TCP/UDP 연결 설정

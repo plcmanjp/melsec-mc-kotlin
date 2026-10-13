@@ -1,9 +1,9 @@
 // Copyright 2026 plcmanjp
 // SPDX-License-Identifier: Apache-2.0
 
-package com.plciocheck.melsecmc.device
+package melsecmckotlin.device
 
-import com.plciocheck.melsecmc.FrameException
+import melsecmckotlin.FrameException
 
 /**
  * 파싱된 PLC 디바이스 참조
