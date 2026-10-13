@@ -18,4 +18,4 @@ English is the default language for reader-facing documentation. Keep the matchi
 
 ## Verify
 
-From the repository root, run `./gradlew build test :melsec-cli:installDist`. On Windows, use `gradlew.bat`.
+From the repository root, run `./gradlew build dist`. On Windows, use `gradlew.bat`.

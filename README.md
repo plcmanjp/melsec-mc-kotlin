@@ -15,6 +15,8 @@ This is an independent implementation, not an official or certified Mitsubishi E
 | `melsec-mc` | Device address parsing, frame encoding/decoding, TCP/UDP clients |
 | `melsec-cli` | 3E Binary TCP/UDP examples for reads and explicitly enabled writes |
 
+Sources are in each module's `src/` directory and tests are in `test/`. The core keeps only the `device/`, `frame/`, and `transport/` groups. Kotlin package names remain `com.plciocheck.melsecmc...`; directory depth is independent of those names.
+
 The core implements:
 
 - All four combinations of 3E/4E frames and Binary/ASCII data, with TCP/UDP transport
@@ -34,16 +36,16 @@ Install JDK 17 and set `JAVA_HOME`. The included official Gradle Wrapper downloa
 ```bash
 git clone https://github.com/plcmanjp/melsec-mc-kotlin.git
 cd melsec-mc-kotlin
-./gradlew build test :melsec-cli:installDist
+./gradlew build dist
 ```
 
 On Windows PowerShell:
 
 ```powershell
-.\gradlew.bat build test :melsec-cli:installDist
+.\gradlew.bat build dist
 ```
 
-Core and sources JARs are written to `melsec-mc/build/libs/`. The CLI is installed in `melsec-cli/build/install/melsec-cli/`. Automated tests use frame fixtures and local sockets; they do not require a physical PLC.
+Core and sources JARs are written to `dist/melsec-mc/`. The CLI is installed in `dist/melsec-cli/`. CLI ZIP/TAR archives are written directly to `dist/`. `./gradlew clean` removes generated distributions. Automated tests use frame fixtures and local sockets; they do not require a physical PLC.
 
 If test classes fail to load on Windows, try a fresh checkout in a short ASCII-only path outside a synchronized folder. Local verification failed to load test classes in a long Korean OneDrive path, while the same sources passed in an ASCII temporary path. The cause has not been isolated to a particular character or path property.
 
@@ -98,13 +100,13 @@ The CLI supports 3E Binary only. `--ip` accepts a numeric IPv4 or IPv6 address, 
 
 ```bash
 # Display help without connecting to a PLC.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --help
+./dist/melsec-cli/bin/melsec-cli --help
 
 # Read five words starting at D100.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 read --device D100 --count 5
+./dist/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 read --device D100 --count 5
 
 # Read eight bits starting at M100 over UDP.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 --udp read --device M100 --count 8 --bit
+./dist/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 --udp read --device M100 --count 8 --bit
 ```
 
 On Windows, run `melsec-cli.bat` from the same directory. Writes require explicit permission, for example `write --device D100 --values 100 --allow-write`. This flag does not verify that the equipment is in a safe state. Invalid options and values are rejected before connecting.

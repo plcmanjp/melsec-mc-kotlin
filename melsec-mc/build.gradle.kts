@@ -5,6 +5,11 @@ plugins {
 
 kotlin {
     jvmToolchain(17)
+
+    sourceSets {
+        main { kotlin.setSrcDirs(listOf("src")) }
+        test { kotlin.setSrcDirs(listOf("test")) }
+    }
 }
 
 java {
@@ -26,4 +31,8 @@ tasks.test {
     testLogging {
         events("passed", "failed", "skipped")
     }
+}
+
+tasks.withType<Jar>().configureEach {
+    destinationDirectory.set(rootProject.layout.projectDirectory.dir("dist/melsec-mc"))
 }

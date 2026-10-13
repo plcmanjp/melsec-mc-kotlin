@@ -5,6 +5,11 @@ plugins {
 
 kotlin {
     jvmToolchain(17)
+
+    sourceSets {
+        main { kotlin.setSrcDirs(listOf("src")) }
+        test { kotlin.setSrcDirs(listOf("test")) }
+    }
 }
 
 application {
@@ -42,4 +47,12 @@ distributions {
             }
         }
     }
+}
+
+tasks.named<Sync>("installDist") {
+    into(rootProject.layout.projectDirectory.dir("dist/melsec-cli"))
+}
+
+tasks.withType<AbstractArchiveTask>().matching { it.name == "distZip" || it.name == "distTar" }.configureEach {
+    destinationDirectory.set(rootProject.layout.projectDirectory.dir("dist"))
 }

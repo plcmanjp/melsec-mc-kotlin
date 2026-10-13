@@ -30,8 +30,16 @@ jobs:
       - name: Build and test (Linux)
         if: runner.os == 'Linux'
         shell: bash
-        run: bash ./gradlew --no-daemon --stacktrace build test :melsec-cli:installDist
+        run: bash ./gradlew --no-daemon --stacktrace build dist
       - name: Build and test (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
-        run: .\gradlew.bat --no-daemon --stacktrace build test :melsec-cli:installDist
+        run: .\gradlew.bat --no-daemon --stacktrace build dist
+      - name: CLI help (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: ./dist/melsec-cli/bin/melsec-cli --help
+      - name: CLI help (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .\dist\melsec-cli\bin\melsec-cli.bat --help

@@ -12,3 +12,4 @@ local.properties
 *.key
 .DS_Store
 Thumbs.db
+dist/

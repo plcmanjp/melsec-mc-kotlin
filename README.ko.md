@@ -15,6 +15,8 @@ Mitsubishi MELSEC PLC의 MC Protocol 3E/4E 프레임을 다루는 Kotlin/JVM 라
 | `melsec-mc` | 디바이스 주소 파싱, 프레임 인코더/디코더, TCP/UDP 클라이언트 |
 | `melsec-cli` | 3E Binary TCP/UDP 읽기와 명시적으로 허용한 쓰기 예제 |
 
+각 모듈의 소스는 `src/`, 테스트는 `test/`에 있습니다. 코어는 `device/`, `frame/`, `transport/` 기능 폴더만 유지합니다. Kotlin 패키지명은 `com.plciocheck.melsecmc...`로 유지하며 폴더 깊이와는 별개입니다.
+
 코어는 다음 기능을 구현합니다.
 
 - 3E/4E와 Binary/ASCII의 네 가지 프레임 조합, TCP/UDP 전송
@@ -34,16 +36,16 @@ JDK 17을 설치하고 `JAVA_HOME`을 지정하세요. Gradle 9.1.0은 포함된
 ```bash
 git clone https://github.com/plcmanjp/melsec-mc-kotlin.git
 cd melsec-mc-kotlin
-./gradlew build test :melsec-cli:installDist
+./gradlew build dist
 ```
 
 Windows PowerShell에서는 다음 명령을 사용하세요.
 
 ```powershell
-.\gradlew.bat build test :melsec-cli:installDist
+.\gradlew.bat build dist
 ```
 
-코어 JAR와 소스 JAR는 `melsec-mc/build/libs/`에, CLI는 `melsec-cli/build/install/melsec-cli/`에 생성됩니다. 자동 테스트는 프레임 fixture와 로컬 소켓을 사용하며 실제 PLC가 필요하지 않습니다.
+코어 JAR와 소스 JAR는 `dist/melsec-mc/`에, CLI는 `dist/melsec-cli/`에 생성됩니다. CLI ZIP/TAR 압축본은 `dist/`에 생성됩니다. `./gradlew clean`은 생성된 배포 결과를 삭제합니다. 자동 테스트는 프레임 fixture와 로컬 소켓을 사용하며 실제 PLC가 필요하지 않습니다.
 
 Windows에서 테스트 클래스 로딩 오류가 발생하면 동기화 폴더 밖의 짧은 영문 경로에 새로 체크아웃해 실행하세요. 로컬 검증에서는 긴 한글 OneDrive 경로에서 클래스 로딩이 실패했고, 같은 소스의 영문 임시 경로에서는 통과했습니다. 원인을 특정 문자 하나로 단정하지 않습니다.
 
@@ -98,13 +100,13 @@ CLI는 3E Binary 전용이며 `--ip`에는 IPv4/IPv6 숫자 주소를 받습니�
 
 ```bash
 # 도움말은 PLC에 연결하지 않습니다.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --help
+./dist/melsec-cli/bin/melsec-cli --help
 
 # D100부터 5워드를 읽습니다.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 read --device D100 --count 5
+./dist/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 read --device D100 --count 5
 
 # UDP로 M100부터 8비트를 읽습니다.
-./melsec-cli/build/install/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 --udp read --device M100 --count 8 --bit
+./dist/melsec-cli/bin/melsec-cli --ip 192.0.2.10 --port 1025 --udp read --device M100 --count 8 --bit
 ```
 
 Windows에서는 같은 경로의 `melsec-cli.bat`를 실행하세요. 쓰기는 `write --device D100 --values 100 --allow-write`처럼 명시적으로 허용해야 합니다. 이 옵션은 장비가 안전한 상태인지 확인해 주지 않습니다. 잘못된 옵션과 값은 연결 전에 거부합니다.

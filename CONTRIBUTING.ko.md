@@ -18,4 +18,4 @@ PR은 작은 범위로 작성하고 변경 이유와 관련 자동 테스트를 
 
 ## 검증
 
-저장소 루트에서 `./gradlew build test :melsec-cli:installDist`를 실행합니다. Windows에서는 `gradlew.bat`를 사용합니다.
+저장소 루트에서 `./gradlew build dist`를 실행합니다. Windows에서는 `gradlew.bat`를 사용합니다.
